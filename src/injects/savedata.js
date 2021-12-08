@@ -20,7 +20,7 @@ function createSaveData() {
             "version": "1",
             "config": {}
         }
-        var jsonContent = JSON.stringify(obj);
+        var jsonContent = fs.readFileSync('model.json'); // Read Model Json for default savedata type
         fs.writeFile(`${path}config.json`, jsonContent, 'utf8', function (err) {
             if (err) {
                 console.log("An error occured while writing JSON Object to File.");
