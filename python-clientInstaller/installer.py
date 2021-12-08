@@ -28,7 +28,7 @@ def download():
                 done = int(50 * dl / total_length)
                 sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )    
                 sys.stdout.flush()
-    with ZipFile(BytesIO(open(file_name, "rb"), "r").read()) as zfile:
+    with ZipFile(open(file_name, "rb").read(), "r") as zfile:
         zfile.extractall(AUDIUS_PATH)
     remove("latest.zip")
 
