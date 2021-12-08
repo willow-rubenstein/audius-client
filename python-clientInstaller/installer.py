@@ -1,5 +1,5 @@
 from pyuac import main_requires_admin
-from os import path, scandir, system, name, remove
+from os import path, scandir, system, name, remove, getenv
 from io import BytesIO
 from urllib.request import urlopen
 from zipfile import ZipFile
@@ -28,9 +28,15 @@ def download():
                 done = int(50 * dl / total_length)
                 sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )    
                 sys.stdout.flush()
-    with ZipFile(open(file_name, "rb").read(), "rb") as zfile:
+    with ZipFile(file_name, "r") as zfile:
         zfile.extractall(AUDIUS_PATH)
     remove("latest.zip")
+    lnk_path = path.join(getenv('APPDATA'), "Microsoft", "Windows", "Start Menu", "Programs", "Audius.lnk")
+    if not path.exists(lnk_path):
+        print("Did not find start menu shortcut for Audius. Creating one...")
+        lnk = open('Audius.lnk', 'rb').read()
+        with open(lnk_path, 'wb') as f:
+            f.write(lnk)
 
 @main_requires_admin
 def main():
