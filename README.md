@@ -6,7 +6,7 @@
   <br/>
 
   <p align="center">
-    The Decentralized <a target="_blank" href="https://audius.co">Audius.co</a> Client
+    The edited Audius Client because their client is disfunctional as shit and sucks ass!
     <br/>
     🎧🎸🎹🤘🎶🥁🎷🎻🎤🔊
   </p>
@@ -15,91 +15,22 @@
 <br/>
 <br/>
 
-[![CircleCI](https://circleci.com/gh/AudiusProject/audius-client.svg?style=svg)](https://circleci.com/gh/AudiusProject/audius-client)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Development
+# Audius, your source code sucks butt
 
-There are 3 environments you can develop against
-- development (local net, see the [Audius Protocol](https://github.com/AudiusProject/audius-protocol))
-- staging (test net)
-- production (main net)
+## What version of npm?
+- Node 14x (latest version is fine)
 
-### Running
+## How to test this shit repo (In React)
+- `npm run start:prod` (Tests against actual Audius servers)
+- this repo is gay as hell and you can only run any of this shit if you use an Ubuntu instance for some damn reason
 
-```bash
-npm install
-npm run start:<environment>
-```
+## How to build this shit repo
+- Run `npm run build:prod`
+- You get some errors, i.e. it won't be able to make build-production, etc.
+- just ctrl+c the build folder contents into a new folder called build-production
 
-### Building
-
-```bash
-# Bundles static assets into ./build-<environment>
-npm run build:<environment>
-```
-
-### Electron (Desktop App)
-
-To run electron using a static build:
-
-```bash
-npm run build:<environment>
-npm run electron:<environment>
-# Or to point at a local service with an optional port specifier
-npm run electron:localhost # -- <port>
-```
-
-To build a desktop binary using a static build (outputs to `./dist`):
-
-```bash
-npm run build:<environment>
-
-# Build all the binaries!!
-npm run dist
-
-npm run dist:mac
-npm run dist:win
-npm run dist:linux
-```
-
-### Testing
-
-[Jest](https://jestjs.io/)
-
-```
-npm run test
-```
-
-### Analyze Webpack Bundle
-
-[webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
-
-```
-npm run analyzeBundle
-```
-
-### Linting
-
-[StandardJS](https://standardjs.com) & [Prettier](https://prettier.io/)
-
-```bash
-npm run lint  # Show lint errors
-npm run lint:fix  # Fix lint errors
-```
-
-### Web Workers
-Audius DApp supports [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) by default to perform heavyweight async tasks. In order to include a package dependency for a worker, a scripts exists:
-> ./scripts/publishScripts.sh
-
-that sources JS files from /node_modules and exports a copy to /public/scripts for the
-worker to pull via ImportScripts. See /src/workers for examples.
-
-## Useful links
-
-* [React](https://reactjs.org/tutorial/tutorial.html)
-* [Redux](https://redux.js.org/basics)
-* [Redux Saga](https://redux-saga.js.org/)
-* [Redux Saga Test Plan](https://github.com/jfairbank/redux-saga-test-plan)
-* [JavaScript Standard Style](https://standardjs.com)
+## How to dist this shit repo
+- Run my custom command `npm run dist:win:prod` because their command uploads it to a server that I do not have access to!
+- Ignore the "wine not detected" error at the end of dist process for Windows. It isn't important!
+- Uh it's also really slow for some damn reason
