@@ -60,6 +60,7 @@
     "moment-timezone": "0.5.28",
     "numeral": "2.0.6",
     "orbit-controls": "0.0.1",
+    "os": "^0.1.2",
     "perspective-camera": "2.0.1",
     "pixi.js": "4.8.9",
     "promise.allsettled": "1.0.4",
@@ -100,6 +101,7 @@
   },
   "main": "src/electron.js",
   "scripts": {
+    "test:savedata": "node ./src/tests/savedata.js",
     "configure-local-env": "node ./scripts/configureLocalEnv.js",
     "configure-local-env-cloud": "node ./scripts/configureLocalEnv.js --remote-host",
     "publish-scripts": "./scripts/publishScripts.sh",

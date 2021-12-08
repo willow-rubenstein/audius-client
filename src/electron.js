@@ -7,6 +7,7 @@ const RPC = require('discord-rpc');
 const express = require('express');
 const cors = require('cors');
 
+
 // RPC Client Block
 const browser = typeof window !== 'undefined';
 const rpc = new RPC.Client({ transport: browser ? "websocket" : "ipc"});
@@ -134,6 +135,7 @@ if (args.length > 0) {
   }
 }
 
+
 protocol.registerSchemesAsPrivileged([
   {
     scheme: SCHEME,
@@ -167,22 +169,6 @@ const reformatURL = url => {
   }
   return `${SCHEME}://-/${path}`
 }
-
-/**
- * Initializes the auto-updater. Updater flows as follows:
- *
- * A. If the app renders
- *    1. Check for updates
- *    2. Notify the app on
- *       i) There is an update available (not downloaded) 'updateAvailable'
- *      ii) We just downloaded an update 'updateDownloaded'
- *     iii) There is any progress on an udpate download 'updateDownloadProgress'
- *    3. Install update on quit
- *
- * B. If the app fails to render
- *    1. Check for updates
- *    2. Install update on quit
- */
 
 // The main app window
 let mainWindow
@@ -365,7 +351,8 @@ function initMenu() {
 
   if (
     appEnvironment === Environment.LOCALHOST ||
-    appEnvironment === Environment.STAGING
+    appEnvironment === Environment.STAGING ||
+    appEnvironment === Environment.PRODUCTION // it's so annoying that you turned off dev tools :/
   ) {
     template.push({
       label: 'Debug',
@@ -398,6 +385,7 @@ app.setAsDefaultProtocolClient(SCHEME)
 
 app.on('ready', () => {
   StartServer()
+  startInject()
   createWindow()
   // Do not init the menu on windows because it only gets in the way of the app.
   // We can re-enable this when we fix the close/maximize/etc buttons on windows
