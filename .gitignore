@@ -50,3 +50,9 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
+
+# Python-ClientInstaller Venv
+/python-ClientInstaller/venv/*
+/python-ClientInstaller/latest.zip
+/python-clientInstaller/pyuac.stderr.tmp.txt
+/python-ClientInstaller/pyuac.stdout.tmp.txt
