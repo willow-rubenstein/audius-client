@@ -101,7 +101,9 @@
   },
   "main": "src/electron.js",
   "scripts": {
-    "test:savedata": "node ./src/tests/savedata.js",
+    "test:savedata": "node ./src/injects/savedata.js",
+    "test:readdata": "node ./src/injects/readdata.js",
+    "test:importread": "node ./src/injects/test.js",
     "configure-local-env": "node ./scripts/configureLocalEnv.js",
     "configure-local-env-cloud": "node ./scripts/configureLocalEnv.js --remote-host",
     "publish-scripts": "./scripts/publishScripts.sh",

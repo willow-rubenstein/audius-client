@@ -5,6 +5,28 @@ import DarkTheme from './dark'
 import DefaultTheme from './default'
 import MatrixTheme from './matrix'
 
+import {readData} from 'injects/readdata';
+import {createSaveData, saveDoesExist} from 'injects/savedata';
+// Customization Injection Block
+var config = {isCustomCssEnabled: null};
+
+if (saveDoesExist() === true) {
+    console.log("AMULLER DEBUG: SINJECT: Found plugins folder. Scanning for changes...")
+    console.log("AMULLER DEBUG: SINJECT: Found config file. Loading...")
+    config = readData();
+}
+
+// Check for Custom CSS Enabled and Read/Write to temp css file and import if exists
+const cssPath = require("os").homedir() + '/Documents/Audius/css/theme.css';
+if (config.isCustomCssEnabled) {
+    var theme = fs.readFileSync(cssPath);
+    fs.writeFileSync(__dirname+"temp.css", theme);
+    import './temp.css'
+} else {
+    import './index.css'
+}
+
+
 const NATIVE_MOBILE = process.env.REACT_APP_NATIVE_MOBILE
 
 const THEME_KEY = 'theme'

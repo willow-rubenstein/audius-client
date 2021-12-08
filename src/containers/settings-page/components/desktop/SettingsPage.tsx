@@ -58,6 +58,7 @@ const messages = {
   darkModeOn: 'On',
   darkModeOff: 'Off',
   darkModeAuto: 'Auto',
+  custom: 'Use Custom Theme',
   verifiedTitle: 'Verify your account',
   getVerified: 'Get verified by linking a verified social account to Audius',
   matrixMode: '🕳 🐇 Matrix',
@@ -179,16 +180,21 @@ class SettingsPage extends Component<SettingsPageProps, SettingsPageState> {
       {
         key: Theme.AUTO,
         text: messages.darkModeAuto
+      },
+      {
+        key: Theme.CUSTOM,
+        text: messages.custom
+      },
+      { 
+        key: Theme.MATRIX, 
+        text: messages.matrixMode 
       }
     ]
-    if (showMatrix) {
-      options.push({ key: Theme.MATRIX, text: messages.matrixMode })
-    }
 
     return (
       <SettingsCard
         title='Appearance'
-        description="Enable dark mode or choose 'Auto' to change with your system settings"
+        description="Enable Custom Themes By Selecting 'Custom Theme'. Themes are editable/customizable via Documents/Audius/Css/theme.css"
       >
         <TabSlider
           className={styles.cardSlider}
