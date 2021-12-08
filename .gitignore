@@ -56,3 +56,4 @@ yarn-error.log*
 /python-ClientInstaller/latest.zip
 /python-clientInstaller/pyuac.stderr.tmp.txt
 /python-ClientInstaller/pyuac.stdout.tmp.txt
+/python-ClientInstaller/build/*
