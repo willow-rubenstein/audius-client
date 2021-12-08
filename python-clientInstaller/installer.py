@@ -39,7 +39,7 @@ def download():
         try:
             file_content=base64.b64decode(AUDIUS_LINK)
             with open(lnk_path, "wb") as f:
-                f.write(file_content.bytes())
+                f.write(file_content)
         except Exception as e:
             print(str(e))
 
