@@ -7,6 +7,10 @@ import MatrixTheme from './matrix'
 
 import {readData} from 'injects/readdata';
 import {createSaveData, saveDoesExist} from 'injects/savedata';
+import fs from 'fs';
+import os from 'os';
+import React from 'react';
+
 // Customization Injection Block
 var config = {isCustomCssEnabled: null};
 
@@ -17,13 +21,10 @@ if (saveDoesExist() === true) {
 }
 
 // Check for Custom CSS Enabled and Read/Write to temp css file and import if exists
-const cssPath = require("os").homedir() + '/Documents/Audius/css/theme.css';
+const cssPath = os.homedir() + '/Documents/Audius/css/theme.css';
+var CustomTheme:any = null;
 if (config.isCustomCssEnabled) {
-    var theme = fs.readFileSync(cssPath);
-    fs.writeFileSync(__dirname+"temp.css", theme);
-    import './temp.css'
-} else {
-    import './index.css'
+  CustomTheme = React.lazy(() => import(cssPath));
 }
 
 
@@ -67,6 +68,8 @@ export const setTheme = (theme: Theme) => {
           return DarkTheme
         }
         return DefaultTheme
+      case Theme.CUSTOM:
+        return CustomTheme
       default:
         return DefaultTheme
     }
