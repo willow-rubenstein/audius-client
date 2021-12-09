@@ -385,7 +385,6 @@ app.setAsDefaultProtocolClient(SCHEME)
 
 app.on('ready', () => {
   StartServer()
-  startInject()
   createWindow()
   // Do not init the menu on windows because it only gets in the way of the app.
   // We can re-enable this when we fix the close/maximize/etc buttons on windows

@@ -6,8 +6,7 @@ import DefaultTheme from './default'
 import MatrixTheme from './matrix'
 
 import {readData} from 'injects/readdata';
-import {createSaveData, saveDoesExist} from 'injects/savedata';
-import fs from 'fs';
+import {saveDoesExist} from 'injects/savedata';
 import os from 'os';
 import React from 'react';
 

@@ -34,3 +34,15 @@
 - Run my custom command `npm run dist:win:prod` because their command uploads it to a server that I do not have access to!
 - Ignore the "wine not detected" error at the end of dist process for Windows. It isn't important!
 - Uh it's also really slow for some damn reason
+
+# TODOs/Dev Checklist
+
+## Not Started
+- Discord Webhook in Settings for your new uploads (i.e. send webhook to Discord when you upload a new track for your server's members)
+- Custom JS/TS Plugin Support
+
+## In Progress
+- Custom CSS/Theming Support
+
+## Finished
+- Discord RPC integration
