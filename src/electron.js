@@ -31,18 +31,21 @@ function startRPC() {
     });
 }
 
-function UpdateRPC(artist, title) {
-    rpc.request('SET_ACTIVITY', {
-        pid: process.pid,
-        activity : {
-            details : `Listening to ${title}`,
-            state: `by ${artist}`,
-            assets : {
-                large_image : "audius",
-                large_text : `Plugin By Ashe Muller`
-            }
-        }
-    })
+function UpdateRPC(artist, title, currentTime, duration) {
+  rpc.request('SET_ACTIVITY', {
+      pid: process.pid,
+      activity : {
+          details : `Listening to ${title}`,
+          state: `by ${artist}`,
+          assets : {
+              large_image : "audius",
+              large_text : `Plugin By Ashe Muller`
+          },
+          timestamps: {
+            end: Math.floor(Date.now() / 1000) + (duration - currentTime)
+          }
+      }
+  })
 }
 
 function clearRPC() {
@@ -72,10 +75,10 @@ server.use(
 );
 
 server.post('/', (req, res) => {
-    if (req.body.artist && req.body.title){
-        UpdateRPC(req.body.artist, req.body.title);
-    }
-    res.status(200).send("OK");
+  if (req.body.artist && req.body.title && req.body.currentTime && req.body.duration) {
+      UpdateRPC(req.body.artist, req.body.title, req.body.currentTime, req.body.duration);
+  }
+  res.status(200).send("OK");
 });
 
 server.delete('/', (req, res) => {
