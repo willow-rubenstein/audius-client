@@ -75,7 +75,7 @@ server.use(
 );
 
 server.post('/', (req, res) => {
-  if (req.body.artist && req.body.title && req.body.currentTime && req.body.duration) {
+  if (req.body.hasOwnProperty("artist") && req.body.hasOwnProperty("title") && req.body.hasOwnProperty("currentTime") && req.body.hasOwnProperty("duration")) {
       UpdateRPC(req.body.artist, req.body.title, req.body.currentTime, req.body.duration);
   }
   res.status(200).send("OK");

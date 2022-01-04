@@ -228,10 +228,6 @@ class AudioStream {
         }
         global_title = info.title
         global_artist = info.artist
-        axios.post('http://localhost:9000/', 
-          {"artist": info.artist, "title": info.title, "currentTime": this.audio.currentTime, "duration": this.duration},
-          {headers: {'content-type' : 'application/json'}}
-        ).then(response => console.log(response))
         const hlsConfig = { ...HlsConfig, fLoader: creatorFLoader }
         this.hls = new Hls(hlsConfig)
 
@@ -326,7 +322,7 @@ class AudioStream {
     // In case we haven't faded out the last pause, pause again and
     // clear our listener for the end of the pause fade.
     axios.post('http://localhost:9000/', 
-          {"artist": global_artist, "title": global_title, "currentTime": this.audio.currentTime, "duration": this.duration}, 
+          {"artist": global_artist, "title": global_title, "currentTime": this.audio.currentTime, "duration": this.audio.duration}, 
           {headers: {'content-type' : 'application/json'}}
         ).then(response => console.log(response))
     this.audio.removeEventListener('fade-out', this._pauseInternal)
@@ -419,6 +415,10 @@ class AudioStream {
 
   seek = (seconds: number) => {
     this.audio.currentTime = seconds
+    axios.post('http://localhost:9000/', 
+      {"artist": global_artist, "title": global_title, "currentTime": this.audio.currentTime, "duration": this.audio.duration}, 
+      {headers: {'content-type' : 'application/json'}}
+    ).then(response => console.log(response))
   }
 
   setVolume = (value: number) => {
